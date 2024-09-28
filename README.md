@@ -9,7 +9,7 @@ GATT characteristics are the traditional way to make information available from 
 An alternative to GATT characteristics is required.
 
 ## How?
-The solution adopted by many device manufacturers is to broadcast sensor information using data fields in the BLE advertisement. I'm doing the same thing here. Using the _Manufacturer Data_ field, I'm encoding the temperature and humidity readings from the DHT22 sensor into the BLE advertisement. ESPHome is able to receive this advertisement and decode the data with a lambda function. From there it's sent to Home Assistant.
+The solution adopted by many device manufacturers is to broadcast sensor information using data fields in the BLE advertisement. I'm doing the same thing here. Using the _Manufacturer Data_ field, I'm encoding the temperature and humidity readings from the DHT22 sensor into the BLE advertisement. ESPHome is able to receive this advertisement and decode the data with lambda functions. From there it's sent to Home Assistant.
 
 ## Show Me the Code!
 The MicroPython code is all contained in `main.py`. Simply upload it to an ESP32 flashed with a recent version of MicroPython. You'll also need to install the `aioble` library package for Bluetooth. [mip](https://docs.micropython.org/en/latest/reference/packages.html) is a fabulous tool to do this.
