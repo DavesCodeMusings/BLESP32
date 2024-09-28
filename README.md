@@ -28,7 +28,24 @@ The BLESP32 device's LED (if you have one configured) will turn on when the DHT2
 
 Attaching the ESP32 to a host computer over USB will show debug information in the form of print statements. Included in this is the Bluetooth MAC address for the device. The correct MAC is required for ESPHome to recognize the device's advertisements.
 
+```
+Outdoor_Weather
+1D:EC:AF:C0:FF:EE
+Initializing sensor.
+Registering BLE services.
+Reading from sensor.
+Temperature: 21.6° C
+Humidity: 72.1%
+Writing sensor data to BLE characteristics.
+Advertising availability of data.
+```
+
 When ESPHome is receiving, the log output will show the temperature and humidity readings being sent to Home Assistant. Check for the presence of these values. They should match the temperature and humidity in the debug output of the BLESP32 device.
+
+```
+[03:21:52][D][sensor:094]: 'DHT22 Temperature': Sending state 21.60000 ° C with 2 decimals of accuracy
+[03:21:52][D][sensor:094]: 'DHT22 Humidity': Sending state 72.10000 % with 2 decimals of accuracy
+```
 
 Finally, check the entities in Home Assistant.
 
