@@ -70,10 +70,13 @@ esp32_ble_tracker:
       manufacturer_id: FFFF
       then:
         - lambda:
-            float t = ((x[1] << 8) + x[0]) / 100.0;
-            id(dht22_temperature).publish_state(t);
-            float h = ((x[3] << 8) + x[2]) / 100.0;
-            id(dht22_humidity).publish_state(h);
+        - lambda:
+            float dht22_c = ((x[1] << 8) + x[0]) / 100.0;
+            id(dht22_temperature_celsius).publish_state(dht22_c);
+            float dht22_f = dht22_c * 1.8 + 32;
+            id(dht22_temperature_fahrenheit).publish_state(dht22_f);
+            float dht22_h = ((x[3] << 8) + x[2]) / 100.0;
+            id(dht22_humidity).publish_state(dht22_h);
 
 # Reference:
 # https://esphome.io/components/sensor/index.html
