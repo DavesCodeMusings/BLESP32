@@ -22,7 +22,15 @@ To communicate the temperature/humidity sensor readings to Home Assitant, you'll
 There are a handful of parameters in `main.py` you can use to customize the behavior of the BLESP32 device, starting with DEVICE_NAME and ending with SLEEP_TIME_SECS. The names are pretty self-explanitory and there are comments as well.
 
 ## Troubleshooting
-Attaching the ESP32 to a host computer over USB will show you debug information in the form of print statements. The LED (if you have one configured) will turn on when the DHT22 sensor is being accessed and turn off after a successful read. If the LED stays on, there's probably something wrong with the wiring of the DHT22.
+There are a number of steps to go from the DHT22 sensor to the home automation hub. Each one can be a potential problem.
+
+The BLESP32 device's LED (if you have one configured) will turn on when the DHT22 sensor is being accessed and turn off after a successful read. If the LED stays on, there's probably something wrong with the wiring of the DHT22.
+
+Attaching the ESP32 to a host computer over USB will show debug information in the form of print statements. Included in this is the Bluetooth MAC address for the device. The correct MAC is required for ESPHome to recognize the device's advertisements.
+
+When ESPHome is receiving, the log output will show the temperature and humidity readings being sent to Home Assistant. Check for the presence of these values. They should match the temperature and humidity in the debug output of the BLESP32 device.
+
+Finally, check the entities in Home Assistant.
 
 ## Customizing
 You're not limited to only reading temperature and humidity. Any kind of sensor you can read with MicroPython should work. The biggest limitation will be the size of the _Manufacturer Data_ field used to broadcast the information. 24 bytes is the maximum amount of data you can send. 
