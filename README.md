@@ -16,7 +16,7 @@ The MicroPython code is all contained in `main.py`. Simply upload it to an ESP32
 
 Obviously, you'll need a DHT22 temperature / humidity sensor as well.
 
-To communicate the temperature/humidity sensor readings to Home Assitant, you'll need another ESP32 flashed with [ESPHome](https://esphome.io/). The `esphome_ble_gateway.yml` file in this repository will help you get it configured.
+To communicate the temperature/humidity sensor readings to Home Assitant, you'll need another ESP32 flashed with [ESPHome](https://esphome.io/). The `esphome_ble_gateway.yml` file in this repository is your guide to getting it configured.
 
 ## Configuration
 There are a handful of parameters in `main.py` you can use to customize the behavior of the BLESP32 device, starting with DEVICE_NAME and ending with SLEEP_TIME_SECS. The names are pretty self-explanitory and there are comments as well.
