@@ -4,7 +4,7 @@ BLESP32 is a portmanteau of BLE (for Bluetooth Low Energy) and ESP32, the venera
 ## Why?
 I wanted a device that could communicate periodic sensor data while spending most of its time in deep sleep. I wanted this data relayed to my home automation hub.
 
-GATT characteristics are the traditional way to make information available from BLE devices. But, it requires a reliable connection. So the device providing the data has to be up and responding. Having a device that periodically goes into deep sleep does not fit well with connection oriented protocols.
+GATT characteristics are the traditional way to make information available from BLE devices. But, it requires a fairly reliable connection. In other words, the device providing the data has to be up and responding. Having a device that periodically goes into deep sleep does not fit well with connection oriented protocols.
 
 An alternative to GATT characteristics is required.
 
