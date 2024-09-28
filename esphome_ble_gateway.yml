@@ -1,0 +1,80 @@
+# Configure a second ESP32 to act as a Blutooth gateway, connecting the
+# temperature/humidity sensor to Home Assistant via ESPHome.
+esphome:
+  name: ble_gateway
+  friendly_name: BLE_Gateway
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "<redacted>"
+
+ota:
+  - platform: esphome
+    password: "<redacted>"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "BLE_Gateway Fallback Hotspot"
+    password: "<redacted>"
+
+captive_portal:
+
+switch:
+  - platform: gpio
+    pin:
+      number: GPIO02
+    id: gpio_led
+    name: "BLE_Gateway LED"
+
+bluetooth_proxy:
+  active: true
+
+binary_sensor:
+  - platform: ble_presence
+    device_class: presence
+    mac_address: 1D:EC:AF:C0:FF:EE
+    name: BLESP32
+    icon: mdi:cpu-32-bit
+
+sensor:
+  - platform: template
+    name: "DHT22 Temperature"
+    icon: mdi:thermometer
+    unit_of_measurement: "° C"
+    accuracy_decimals: 2
+    id: dht22_temperature
+
+  - platform: template
+    name: "DHT22 Humidity"
+    icon: mdi:water-percent
+    unit_of_measurement: "%"
+    accuracy_decimals: 2
+    id: dht22_humidity
+
+esp32_ble_tracker:
+  on_ble_manufacturer_data_advertise:
+    - mac_address: 1D:EC:AF:C0:FF:EE
+      manufacturer_id: FFFF
+      then:
+        - lambda:
+            float t = ((x[1] << 8) + x[0]) / 100.0;
+            id(dht22_temperature).publish_state(t);
+            float h = ((x[3] << 8) + x[2]) / 100.0;
+            id(dht22_humidity).publish_state(h);
+
+# Reference:
+# https://esphome.io/components/sensor/index.html
+# https://esphome.io/components/sensor/template.html
