@@ -14,7 +14,7 @@ The solution adopted by many device manufacturers is to broadcast sensor informa
 ## Show Me the Code!
 The MicroPython code is all contained in `main.py`. Simply upload it to an ESP32 flashed with a recent version of MicroPython. You'll also need to install the `aioble` library package for Bluetooth. [mip](https://docs.micropython.org/en/latest/reference/packages.html) is a fabulous tool to do this.
 
-Obviously, you'll need a DHT22 temperature /humidity sensor as well.
+Obviously, you'll need a DHT22 temperature / humidity sensor as well.
 
 To communicate the temperature/humidity sensor readings to Home Assitant, you'll need another ESP32 flashed with [ESPHome](https://esphome.io/). The `esphome_ble_gateway.yml` file in this repository will help you get it configured.
 
