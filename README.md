@@ -1,5 +1,5 @@
 # BLESP32
-BLESP32 is a portmanteau of BLE (for Bluetooth Low Energy) and ESP32, the venerable Espressif microcontroller. What you'll find here is a MicroPython program that runs on ESP32 to collect data from the popular DHT22 temperature and humidity sensor, sending it out not only as traditional GATT characteristics, but also in BLE advertising packets that can be captured in ESPHome's Bluetooth Tracker for relaying to Home Assistant.
+BLESP32 is a portmanteau of BLE (for Bluetooth Low Energy) and ESP32, the venerable Espressif microcontroller. What you'll find here is a MicroPython program that runs on an ESP32 to collect data from the popular DHT22 temperature and humidity sensor, sending it out not only as traditional GATT characteristics, but also in BLE advertising packets that can be captured in ESPHome's Bluetooth Tracker for relaying to Home Assistant.
 
 ## Why?
 I wanted a device that could communicate periodic sensor data while spending most of its time in deep sleep. I wanted this data relayed to my home automation hub.
