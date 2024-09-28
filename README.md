@@ -50,7 +50,7 @@ When ESPHome is receiving, the log output will show the temperature and humidity
 Finally, check the entities in Home Assistant.
 
 ## Customizing
-You're not limited to only reading temperature and humidity. Any kind of sensor you can read with MicroPython should work. The biggest limitation will be the size of the _Manufacturer Data_ field used to broadcast the information. 24 bytes is the maximum amount of data you can send. 
+You're not limited to only broadcasting temperature and humidity. Any kind of sensor you can read with MicroPython should work. The biggest limitation will be the size of the _Manufacturer Data_ field used to broadcast the information. 24 bytes is the maximum amount of data you can send. 
 https://stackoverflow.com/questions/33535404/whats-the-maximum-length-of-a-ble-manufacturer-specific-data-ad
 
 Other things to keep in mind are BLE's convention of sending data in little endian format and often with a fixed-point decimal as well. This is really only important if you're using GATT characteristics in addition to the data broadcast in the _Manufacturer Data_ field of the BLE advertisement.
