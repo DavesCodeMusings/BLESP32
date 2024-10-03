@@ -4,9 +4,9 @@ BLESP32 is a portmanteau of BLE (for Bluetooth Low Energy) and ESP32, the venera
 ## Why?
 I wanted a device that could communicate periodic sensor data while spending most of its time in deep sleep. I wanted this data relayed to my home automation hub.
 
-GATT characteristics are the traditional way to make information available from BLE devices. But, it requires a fairly reliable connection. In other words, the device providing the data has to be up and responding. Having a device that periodically goes into deep sleep does not fit well with this connection oriented protocol.
+GATT characteristics are the traditional way to make information available from BLE devices. But, it requires a fairly reliable connection. In other words, the device providing the data has to be up and responding when polled. Having a device that periodically goes into deep sleep does not fit well with this connection oriented protocol.
 
-An alternative to GATT characteristics is required.
+An alternative to polling GATT characteristics is required.
 
 ## How?
 The solution adopted by many device manufacturers is to broadcast sensor information using data fields in the BLE advertisement. I'm doing the same thing here. Using the _Manufacturer Data_ field, I'm encoding the temperature and humidity readings from the DHT22 sensor into the BLE advertisement. ESPHome is able to receive this advertisement and decode the data with lambda functions. From there it's sent to Home Assistant.
