@@ -1,3 +1,5 @@
+_For a more standard way of creating a BLE beacon with MicroPython, see https://github.com/DavesCodeMusings/BTHome-MicroPython_
+
 # BLESP32
 BLESP32 is a portmanteau of BLE (for Bluetooth Low Energy) and ESP32, the venerable Espressif microcontroller. What you'll find here is a MicroPython program that runs on an ESP32 to collect data from the popular DHT22 temperature and humidity sensor, sending it out not only as traditional GATT characteristics, but also in BLE advertising packets that can be captured in ESPHome's Bluetooth Tracker for relaying to Home Assistant.
 
@@ -58,4 +60,4 @@ Other things to keep in mind are BLE's convention of sending data in little endi
 There is no standard for the _Manufacturer Data_ field other than the 16-bit company IDs available for use. Registration is required for these. But, the Company ID of 0xFFFF used in `main.py` is reserved for testing and should be safe to use in a small home environment.
 
 ## Next Steps
-My goal was to create a temperature / humidity sensor that could stand up to the extreme winter temperatures where I live. The DHT22 is well suited for that. I may also configure an ESP32 with a rechargeable Litium Polymer battery to use as vehicle presense sensor. What you do with yours is up to you. If you'd like to share your project, drop a line in the [Issues](https://github.com/DavesCodeMusings/BLESP32/issues) Use the [show &amp; tell](https://github.com/DavesCodeMusings/BLESP32/labels/show%20%26%20tell) label.
+My goal was to create a temperature / humidity sensor that could stand up to the extreme winter temperatures where I live. The DHT22 is well suited for that. I may also configure an ESP32 with a rechargeable Lithium Polymer battery to use as vehicle presense sensor. What you do with yours is up to you. If you'd like to share your project, drop a line in the [Issues](https://github.com/DavesCodeMusings/BLESP32/issues) Use the [show &amp; tell](https://github.com/DavesCodeMusings/BLESP32/labels/show%20%26%20tell) label.
